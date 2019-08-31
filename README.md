@@ -1,13 +1,13 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Buenas días, tardes o noches. Este es un repositorio git el cual contiene las practicas que estoy realizando para aprender React. El curos que hago esta disponible en la plataforma de Udemy a disposición de todos.
 
-## Available Scripts
+## Scripts disponibles
 
-In the project directory, you can run:
+Este proyecto puede ser ejecutado con el siguiente comando
 
 ### `npm start`
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Para poder visualizar la app en el navegador.<br>
+Abrimos [http://localhost:3000](http://localhost:3000) para ver el proyecto.
 
 The page will reload if you make edits.<br>
 You will also see any lint errors in the console.
