@@ -1,5 +1,6 @@
 import React from 'react';
 import WeatherIcons from 'react-weathericons';
+import PropTypes from 'prop-types';
 import {
     CLOUD,
     CLOUDY,
@@ -31,8 +32,15 @@ const WeatherTemperature = ({temperature, weatherState}) => (
         {
             getWeatherIcon(weatherState)
         }
-        <spam>{`${temperature} Cº`}</spam>
+        <span>{`${temperature} Cº`}</span>
     </div>
 );
+
+// Validacion por consola, asignamos la variable y le decimos el tipo de variable que es
+// tambien podemos decirle si es requerida o no con isRequired
+WeatherTemperature.propTypes = {
+    temperature: PropTypes.number.isRequired,
+    weatherState: PropTypes.string.isRequired,
+};
 
 export default WeatherTemperature;
