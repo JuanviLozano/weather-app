@@ -5,21 +5,20 @@ import './styles.css';
 
 import {
     SUN,
-    WINDY,
 } from './../../constants/Weathers';
+
+// Constantes para traer datos de la web https://home.openweathermap.org
+const location = "Murcia,es"
+const api_key = "4637ac1baf6432248446c13803cfc33b"
+const url_base_weather = "https://api.openweathermap.org/data/2.5/weather"
+
+const api_weather = `${url_base_weather}?q=${location}&appid=${api_key}`
 
 const data = {
     temperature: 6,
     weatherState: SUN,
     humidity: 10,
     wind: '10 m/s',
-}
-
-const data2 = {
-    temperature: 15,
-    weatherState: WINDY,
-    humidity: 20,
-    wind: '20 m/s',
 }
 
 // Esto es un componente
@@ -40,11 +39,40 @@ class WeatherLocation extends Component {
         };
     }
 
+    getWeatherState = weather_data => {
+        return SUN;
+    }
+
+    // Nueva funcion para transformar datos
+    getData = weather_data => {
+        const { humidity, temp } = weather_data.main;
+        const { speed } = weather_data.wind;
+        const weatherState =  this.getWeatherState(weather_data);
+        
+        const data = {
+            humidity,
+            temperature: temp,
+            weatherState,
+            wind: `${speed} m/s`,
+        }
+
+        return data;
+    }
+
     // Cuando insertamos datos o queremos modificarlos, no tenemos que llamar al this.state, sino al this.setState
     handleUpdateClick = () => {
-        console.log("actualizado");
-        this.setState({
-            data: data2,
+        // Llamamos al fetch con la url
+        fetch(api_weather).then( resolve => {
+            
+            return resolve.json();
+        }).then(data => {
+
+            const newWeather = this.getData(data);
+            console.log(newWeather);
+            debugger;
+            this.setState({
+                data: newWeather
+            });
         });
     }
 
